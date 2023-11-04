@@ -15,7 +15,7 @@ export const addBook = async (request, response) => {
 
 export const getBooks = async (request, response) => {
    try {
-      const book = await Book.find({});
+      const book = await Book.find({}).sort({ timestamp: -1 });
       response.status(200).json(book);
    } catch (error) {
       response.status(404).json({ message: error.message });
