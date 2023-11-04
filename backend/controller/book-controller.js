@@ -1,5 +1,5 @@
 import { response } from 'express';
-import Book from '../schema/book-schema';
+import Book from '../schema/book-schema.js';
 
 export const addBook = async (request, response) => {
    const book = request.body;
@@ -14,6 +14,15 @@ export const addBook = async (request, response) => {
 };
 
 export const getBooks = async (request, response) => {
+   try {
+      const book = await Book.find({});
+      response.status(200).json(book);
+   } catch (error) {
+      response.status(404).json({ message: error.message });
+   }
+};
+
+export const getBook = async (request, response) => {
    try {
       const book = await Book.findById(request.params.id);
       response.status(200).json(book);
