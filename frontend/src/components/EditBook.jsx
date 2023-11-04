@@ -84,7 +84,6 @@ const EditBook = () => {
                minRows={8}
                name='summary'
                onChange={(e) => onValueChange(e)}
-               name='summary'
                value={book.summary}
             />
          </FormControl>

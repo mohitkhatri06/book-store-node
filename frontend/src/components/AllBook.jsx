@@ -34,6 +34,7 @@ const TBody = styled(TableRow)`
       font-size: 20px;
    }
 `;
+console.log(`{${process.env.REACT_APP_BASE_URL}}`);
 
 const AllBook = () => {
    const [books, setBooks] = useState([]);
@@ -44,7 +45,7 @@ const AllBook = () => {
 
    const getAllBooks = async () => {
       let response = await getBooks();
-      setBooks(response.data);
+      setBooks(response?.data);
    };
 
    const deleteBookDetails = async (id) => {
